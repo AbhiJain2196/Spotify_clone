@@ -35,7 +35,7 @@ function Player() {
     if (!songInfo) {
       spotifyApi.getMyCurrentPlayingTrack().then((data) => {
         setCurrentIdTrack(data.body?.item.id);
-        spotifyApi.getMyCurrentPlayingState().then((data) => {
+        spotifyApi.getMyCurrentPlaybackState().then((data) => {
           setIsPlaying(data.body?.is_playing);
         });
       });
