@@ -48,7 +48,7 @@ export default NextAuth({
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
           username: account.providerAccountId,
-          accessTokenExpires: (account.expires_at = 1000), // Time in millisecond hence =1000
+          accessTokenExpires: account.expires_at * 1000, // Time in millisecond hence =1000
         };
       }
       // Return previous token if the access token has not expired yet
@@ -59,7 +59,7 @@ export default NextAuth({
       console.log("access token has expired,refreshing");
       return await refreshAccessToken(token);
     },
-    
+
     async session({ session, token }) {
       session.user.accessToken = token.accessToken;
       session.user.refreshToken = token.refreshToken;
