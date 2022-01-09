@@ -1,7 +1,4 @@
-import {
-  HeartIcon,
-  VolumeUpIcon as VolumeDownIcon,
-} from "@heroicons/react/outline";
+import { VolumeUpIcon as VolumeDownIcon } from "@heroicons/react/outline";
 import {
   RewindIcon,
   VolumeUpIcon,
@@ -11,7 +8,6 @@ import {
   SwitchHorizontalIcon,
   ReplyIcon,
 } from "@heroicons/react/solid";
-import { data } from "autoprefixer";
 import { debounce } from "lodash";
 
 import { useSession } from "next-auth/react";
@@ -63,13 +59,13 @@ function Player() {
 
   useEffect(() => {
     if (volume > 0 && volume < 100) {
-      debounceAdjustVolume(volume)
+      debounceAdjustVolume(volume);
     }
   }, [volume]);
 
   const debounceAdjustVolume = useCallback(
     debounce((volume) => {
-      spotifyApi.setVolume(volume).catch((err) => {});;
+      spotifyApi.setVolume(volume).catch((err) => {});
     }, 500),
     []
   );
